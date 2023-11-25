@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(97, 53, 21);
+        }
+
+        .formClass {
+            margin-left: 30%;
+            margin-right: 30%;
+            margin-top: 10%;
+            background-color: azure;
+            padding: 10px;
+        }
+
+        #submit {
+            background-color: rgb(132, 141, 123);
+            padding: 20px;
+            font-size: medium;
+            font-style: italic;
+            font-weight: 400;
+            align-items: center;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="formClass">
+        <!--  -->
+        <!-- <form name="myForm"> -->
+        <form name="myForm" onsubmit="return validationForm2()">
+        <label>Name:</label>
+        <input type="text" name="uname">
+        <div id="uuname"></div><br><br>
+        <label>Password:</label>
+        <input type="password" name="pwd" id="pwd">
+        <div id="ppwd"></div><br><br>
+        <label>Email:</label>
+        <input type="email" name="email" id="email">
+        <div id="pemail"></div><br><br>
+        <label>Number:</label>
+        <input type="text" name="mobile" id="mobile">
+       
+        <input type="radio" name="gender" value="male">Male
+        <input type="radio" name="gender" value="female">Female<br><br>
+        <button>Submit</button>
+        </form>
+    </div>
+    <div id="submit">
+
+    </div>
+
+    <script>
+        function validationForm2() {
+            alert(isNaN(document.myForm.mobile.value))
+            console.log(document.myForm.mobile.value)
+        }
+
+        function printName() {
+            validationForm();
+            if (validationForm()) {
+
+                let username = document.myForm.uname.value;
+                document.getElementById("uuname").innerHTML = `<p>username is ${username}</p>`;
+                let email = document.getElementById("email").value;
+                document.getElementById("pemail").innerHTML = `<p>Email is ${email}</p>`;
+
+                let gender = document.getElementsByName("gender").value;
+                console.log(gender)
+                document.getElementById("container").innerHTML = `Username is ${username}<br>Email is ${email}<br>`;
+                document.getElementById("container").style.display = "inline";
+            }
+        }
+        function validationForm() {
+            if (document.myForm.uname.value == '') {
+                alert("please enter a valid name")
+                return false
+            } else if (document.myForm.pwd == undefined) {
+                alert("please enter a valid password.")
+                return false
+            } else if (document.myForm.pwd.length < 8) {
+                alert("please enter a valid length password.")
+                return false
+            }
+            alert(isNaN(document.myForm.mobile))
+            return true
+        }
+
+
+    </script>
+</body>
+
+</html>
